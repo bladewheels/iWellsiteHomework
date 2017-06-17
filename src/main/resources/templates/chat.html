@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>iWellsite homework - Chat</title>
+        <!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
+    </head>
+    <body>
+        <div class="container">
+            <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+            <div>This is where the chatting will happen!</div>
+
+            <div th:if="${not #lists.isEmpty(chatRooms)}">
+
+                <h2>Chat Rooms</h2>
+
+                <ul>
+                    <li th:each="chatRoom : ${chatRooms}">
+                        <span th:text="${chatRoom.name}">name</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

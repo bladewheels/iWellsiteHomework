@@ -22,6 +22,17 @@ public class ChatRoomController {
         this.chatRoomService = chatRoomService;
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping(value = "/chat", method = RequestMethod.GET)
+    public String doChat(Model model){
+        model.addAttribute("chatRooms", chatRoomService.listAllChatRooms());
+        return "chat";
+    }
+
     @RequestMapping(value = "/chatRooms", method = RequestMethod.GET)
     public String list(Model model){
         model.addAttribute("chatRooms", chatRoomService.listAllChatRooms());
@@ -31,19 +42,19 @@ public class ChatRoomController {
     @RequestMapping("chatRoom/{id}")
     public String showChatRoom(@PathVariable Integer id, Model model){
         model.addAttribute("chatRoom", chatRoomService.getChatRoomById(id));
-        return "chatRoomshow";
+        return "chatRoomShow";
     }
 
     @RequestMapping("chatRoom/edit/{id}")
     public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("chatRoom", chatRoomService.getChatRoomById(id));
-        return "chatRoomform";
+        return "chatRoomForm";
     }
 
     @RequestMapping("chatRoom/new")
     public String newChatRoom(Model model){
         model.addAttribute("chatRoom", new ChatRoom());
-        return "chatRoomform";
+        return "chatRoomForm";
     }
 
     @RequestMapping(value = "chatRoom", method = RequestMethod.POST)
@@ -57,5 +68,4 @@ public class ChatRoomController {
         chatRoomService.deleteChatRoom(id);
         return "redirect:/chatRooms";
     }
-
 }

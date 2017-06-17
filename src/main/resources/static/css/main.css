@@ -1,0 +1,25 @@
+input[type=submit] {
+    background:none!important;
+    border:none;
+    padding:0!important;
+    color: blue;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.navbar-header-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    left: 0;
+    z-index: 20;
+}
+
+.navbar-header-wrapper .navbar-header {
+    width: 100% !important;
+}
+
+.navbar-header .navbar-brand {
+    margin-left: 0px !important;
+}

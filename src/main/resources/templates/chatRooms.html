@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+    <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head lang="en">
         <title>iWellsite homework</title>
         <!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
@@ -7,8 +7,11 @@
     <body>
         <div class="container">
             <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
             <div th:if="${not #lists.isEmpty(chatRooms)}">
+
                 <h2>Chat Rooms</h2>
+
                 <table class="table table-striped">
                     <tr>
                         <th>Id</th>
@@ -18,7 +21,7 @@
                         <th>Edit</th>
                     </tr>
                     <tr th:each="chatRoom : ${chatRooms}">
-                        <td th:text="${chatRoom.id}"><a href="/product/${product.id}">Id</a></td>
+                        <td th:text="${chatRoom.id}"><a href="/chatRoom/${chatRoom.id}">Id</a></td>
                         <td th:text="${chatRoom.name}">name</td>
                         <td th:text="${chatRoom.description}">description</td>
                         <td><a th:href="${ '/chatRoom/' + chatRoom.id}">View</a></td>
@@ -26,6 +29,7 @@
                     </tr>
                 </table>
             </div>
+
         </div>
     </body>
 </html>
