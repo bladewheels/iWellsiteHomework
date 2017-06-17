@@ -26,6 +26,12 @@
 
 	<dependencies>
 
+		<!-- Server-side WebSockets -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
 		<!-- Dev tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -84,6 +90,17 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>2.1.4</version>
+		</dependency>
+		<!-- Client-side WebSockets -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>sockjs-client</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>2.3.3</version>
 		</dependency>
 
 		<!--Testing-->

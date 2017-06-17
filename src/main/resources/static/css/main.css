@@ -23,3 +23,7 @@ input[type=submit] {
 .navbar-header .navbar-brand {
     margin-left: 0px !important;
 }
+
+.navbar-header {
+    background-color: #FFACBA;
+}
