@@ -19,6 +19,9 @@
                                         <li>
                                             <a href="#" th:href="@{/chatRoom/new}" sec:authorize="hasRole('ROLE_ADMIN')">Create Chat Room</a>
                                         </li>
+                                        <li sec:authorize="isAuthenticated()">
+                                            <a href="#" th:href="@{/console}" sec:authorize="hasRole('ROLE_ADMIN')">DB Console</a>
+                                        </li>
                                         <li  sec:authorize="!isAuthenticated()">
                                             <a href="#" th:href="@{/login}">Sign In</a>
                                         </li>

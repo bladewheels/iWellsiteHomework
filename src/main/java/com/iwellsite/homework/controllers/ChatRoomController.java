@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by mshields on 2017-06-16.
+ *
+ * Mostly just CRUD going on here.
+ *
  */
 @Controller
 public class ChatRoomController {
