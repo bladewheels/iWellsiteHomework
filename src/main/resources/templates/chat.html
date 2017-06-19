@@ -4,62 +4,109 @@
         <meta charset="UTF-8"/>
         <title>iWellsite homework - Chat</title>
         <!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
-        <script src="/app.js"></script>
     </head>
     <body>
         <div class="container">
             <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
         </div>
-        <div id="main-content" class="container">
+        <span id="name" style="display:none" sec:authentication="name">Replaced @runtime</span>
+
+        <!--/* Row for Chat Rooms/Friends in left panel & Chat contents in right panel */-->
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    <div th:if="${not #lists.isEmpty(chatRooms)}">
-                        <form class="form-inline">
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <label for="topic">Select Your Chat Room</label>
-                                <select th:field="*{chatRooms}" name="topic" id="topic" class="form-control">
-                                    <option th:each="chatRoom : ${chatRooms}" th:value="${chatRoom.name}" th:text="${chatRoom.name}"></option>
-                                </select>
+
+                <!--/* Container for Chat Rooms/Friends in left vertical panel */-->
+                <div class="col-lg-2">
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseRooms">Rooms</a>
+                                </h4>
                             </div>
-                            <span id="name" style="display:none" sec:authentication="name">Replaced @runtime</span>
-                            <label for="msg">What is your message?</label>
-                            <input type="text" id="msg" class="form-control" placeholder="Your message here..."/>
+
+                            <div id="collapseRooms" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="btn-group-vertical" data-toggle="buttons" th:if="${not #lists.isEmpty(chatRooms)}">
+                                        <label th:each="chatRoom, iterationStatus : ${chatRooms}"
+                                               th:class="${iterationStatus.first}? 'active btn btn-primary' : 'btn btn-primary'"
+                                               class="btn btn-primary" >
+                                            <input type="radio" name="options"
+                                                   th:text="${chatRoom.name}"
+                                                   th:id="${'chatRoomBtn_' + chatRoom.id}"
+                                                   th:attr="data-chat-room-id=${chatRoom.id}, data-chat-room-name=${chatRoom.name}"/>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button id="send" class="btn btn-default" type="submit">Send</button>
-                    </form>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFriends">Friends</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFriends" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <a href="/friends">Add Friends...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!--/* END Container for Chat contents in right panel */-->
+
+                <!--/* Container for Chat contents in right panel */-->
+                <div class="col-lg-10">
+                    <!--/* Row for Chat contents th:id="'chatHistoryFor_' + ${chatRoom.name}" */-->
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div th:id="${'chatRoomHistory_' + chatRoom.id}"
+                                     th:each="chatRoom, iterationStatus : ${chatRooms}"
+                                     th:class="${iterationStatus.first}? 'panel panel-default' : 'hidden panel panel-default'">
+                                    <div class="panel-heading">
+                                        <h4><span th:text="${chatRoom.name}">replaced @runtime</span></h4>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <table th:id="${'chatRoomHistoryTable_' + chatRoom.id}" class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th width="10%">From</th>
+                                                <th width="15%">Topic</th>
+                                                <th width="60%">Message</th>
+                                                <th width="10%">Time</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody th:id="${'chatRoomHistoryTableBody_' + chatRoom.id}">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer clearfix">
+                                <form>
+                                    <div class="input-group col-xs-4 pull-right">
+                                        <input id="msg" type="text" class="form-control" placeholder="Your message&hellip;"/>
+                                        <span class="input-group-btn">
+                                            <button id="send" type="button" class="btn btn-default">Send</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="greetingConversation" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Greetings</th>
-                            </tr>
-                        </thead>
-                        <tbody id="greetings">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table id="conversation" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th width="10%">From</th>
-                        <th width="15%">Topic</th>
-                        <th width="60%">Message</th>
-                        <th width="10%">Time</th>
-                    </tr>
-                    </thead>
-                    <tbody id="messages">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+            </div><!--/* END Row for Chat Rooms/Friends in left panel & Chat contents in right panel */-->
+        </div><!--/* END Container for Chat Rooms/Friends in left panel & Chat contents in right panel */-->
+        <script type="text/javascript" th:inline="javascript">
+            /*<![CDATA[*/
+            // Expose model from Controller to JS via ThymeLeaf attribute: chatRooms
+            window.chatRooms = /*[[${chatRooms}]]*/;
+            /*]]>*/
+        </script>
+        <script src="/app.js"></script>
     </body>
 </html>

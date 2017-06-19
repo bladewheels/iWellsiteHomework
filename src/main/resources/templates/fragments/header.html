@@ -42,10 +42,11 @@
 
                     <div class="jumbotron">
                         <div class="row text-center">
-                            <div class="">
+                            <div sec:authorize="isAuthenticated()">
                                 <h2>Chat Rooms</h2>
-
-                                <h3>Management</h3>
+                                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <h3>Management</h3>
+                                </div>
                             </div>
                         </div>
                         <div class="row text-center">
