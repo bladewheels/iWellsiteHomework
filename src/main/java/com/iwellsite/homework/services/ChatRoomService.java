@@ -1,6 +1,6 @@
 package com.iwellsite.homework.services;
 
-import com.iwellsite.homework.domain.ChatRoom;
+import com.iwellsite.homework.domain.model.ChatRoom;
 
 /**
  * Created by mshields on 2017-06-16.

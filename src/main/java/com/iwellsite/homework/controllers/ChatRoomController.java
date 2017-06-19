@@ -1,6 +1,6 @@
 package com.iwellsite.homework.controllers;
 
-import com.iwellsite.homework.domain.ChatRoom;
+import com.iwellsite.homework.domain.model.ChatRoom;
 import com.iwellsite.homework.services.ChatRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
 package com.iwellsite.homework.services;
 
-import com.iwellsite.homework.domain.ChatRoom;
-import com.iwellsite.homework.domain.ChatRoomRepository;
+import com.iwellsite.homework.domain.model.ChatRoom;
+import com.iwellsite.homework.domain.repo.ChatRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

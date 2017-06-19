@@ -1,5 +1,6 @@
-package com.iwellsite.homework.domain;
+package com.iwellsite.homework.domain.repo;
 
+import com.iwellsite.homework.domain.model.ChatRoom;
 import org.springframework.data.repository.CrudRepository;
 
 /**

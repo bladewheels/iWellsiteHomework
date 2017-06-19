@@ -14,13 +14,13 @@
                                             <a href="#" th:href="@{/chat}">Chat</a>
                                         </li>
                                         <li sec:authorize="isAuthenticated()">
-                                            <a href="#" th:href="@{/chatRooms}" sec:authorize="hasRole('ROLE_ADMIN')">Chat Rooms</a>
+                                            <a href="#" th:href="@{/chatRooms}" sec:authorize="hasAuthority('ADMIN')">Chat Rooms</a>
                                         </li>
                                         <li>
-                                            <a href="#" th:href="@{/chatRoom/new}" sec:authorize="hasRole('ROLE_ADMIN')">Create Chat Room</a>
+                                            <a href="#" th:href="@{/chatRoom/new}" sec:authorize="hasAuthority('ADMIN')">Create Chat Room</a>
                                         </li>
                                         <li sec:authorize="isAuthenticated()">
-                                            <a href="#" th:href="@{/console}" sec:authorize="hasRole('ROLE_ADMIN')">DB Console</a>
+                                            <a href="#" th:href="@{/console}" sec:authorize="hasAuthority('ADMIN')">DB Console</a>
                                         </li>
                                         <li  sec:authorize="!isAuthenticated()">
                                             <a href="#" th:href="@{/login}">Sign In</a>
@@ -44,7 +44,7 @@
                         <div class="row text-center">
                             <div sec:authorize="isAuthenticated()">
                                 <h2>Chat Rooms</h2>
-                                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                <div sec:authorize="hasAuthority('ADMIN')">
                                     <h3>Management</h3>
                                 </div>
                             </div>

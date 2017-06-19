@@ -1,4 +1,4 @@
-package com.iwellsite.homework.domain;
+package com.iwellsite.homework.domain.model;
 
 import lombok.Data;
 import javax.persistence.*;

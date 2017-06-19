@@ -27,14 +27,14 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         authorities.forEach(authority -> {
-            if(authority.getAuthority().equals("ROLE_USER")) {
+            if(authority.getAuthority().equals("USER")) {
                 try {
                     redirectStrategy.sendRedirect(arg0, arg1, "/chat");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-            } else if(authority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if(authority.getAuthority().equals("ADMIN")) {
                 try {
                     redirectStrategy.sendRedirect(arg0, arg1, "/chatRooms");
                 } catch (Exception e) {
