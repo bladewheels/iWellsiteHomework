@@ -9,7 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class HomeworkApplicationTests {merge
+public class HomeworkApplicationTests {
 
 	@Test
 	public void contextLoads() {
